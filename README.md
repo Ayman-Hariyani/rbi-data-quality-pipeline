@@ -27,6 +27,7 @@ Weekly **Foreign Exchange Reserves** (Weekly Statistical Supplement, Table 2) fr
 | 1. Cleaning | `01_cleaning.ipynb` | Turns RBI's raw report export into a clean table and documents the problems found along the way |
 | 2. Missing values | `02_quality_checks.ipynb` | Reports, for every column, the missing count and the longest run of missing weeks with its dates. Flags runs longer than 4 weeks |
 | 3. Sudden jumps | `03_jump_checks.ipynb` | Scores each week's percent change with the median and MAD (a robust measure of spread), and flags weeks scoring above 3.5 |
+| 4. Rupee-dollar consistency | `04_rate_check.ipynb` | Computes the implied exchange rate and runs the jump check on it. Finds no sign of a unit mix-up; a cutoff of 3.5 is too sensitive for this calm series |
 
 ## What I found
 
@@ -57,7 +58,7 @@ Weekly **Foreign Exchange Reserves** (Weekly Statistical Supplement, Table 2) fr
 
 ## Roadmap (planned, not built yet)
 
-- [ ] Exchange-rate consistency check: flag weeks where the rupee and dollar columns disagree
+- [x] Exchange-rate consistency check: flag weeks where the rupee and dollar columns disagree
 - [ ] Benchmark: inject known faults into clean data and measure how well each check catches them, and how often it raises false alarms
 - [ ] A second data source that updates through a live API
 - [ ] Heavy checks in PySpark, deployment and scheduling on Azure
